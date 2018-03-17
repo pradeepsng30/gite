@@ -54,6 +54,7 @@ let gitExec = (cmds) => {
 let deff = function (a,b) {
     console.log('a',a);
     console.log('b',b);
+    console.log(program);
 }
 
 // program
@@ -117,10 +118,12 @@ const addCommands = (cmdList, program) => {
 }
 
 addCommands(cmdList,program)
-program.parse(process.argv);
+//program.parse(process.argv);
+console.log(require('yargs').argv);
+
 
 
 
 
 // if program was called with no arguments, show help.
-if (program.args.length === 0) program.help();
+//if (program.args.length === 0) program.help();
