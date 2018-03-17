@@ -12,7 +12,7 @@ module.exports = {
             ],
           },
           {
-            "cmd": "show-commit [n]",
+            "cmd": "show-commit",
             "args": "[n]",
             "desc": "shows last commit",
             "execCommands": [

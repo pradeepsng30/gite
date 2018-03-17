@@ -1,12 +1,15 @@
 #!/usr/bin/env node
 'use strict';
 const input_args = require('yargs').argv;
+
 const args = input_args._
 const options = input_args;
 const command = args[0];
+
 const content = require('./content');
 const commandList = require('./config').commandList;
 const pkg = require('./package.json');
+const help = require('./help');
 
 let getRelatedCommands = (command) => {
     return commandList.filter(element => {
@@ -18,45 +21,6 @@ let getCommandConfig = function (command) {
     return commandList.filter(element =>{
         return element.cmd === command;
     })[0];
-}
-
-let showHelpForCommand = function (element, showFull) {
-        showFull = showFull || false;
-    let result ="";
-    if(showFull) {
-        result = "\n" + "usage:\t egit " + element.cmd +  (element.args ? " " + element.args : "") + "\n\n";
-        result = result + "Description:\t" + element.desc + "\n";
-        result = result + (element.longDesc ? element.longDesc: "");
-    }
-    else {
-        result = "\t" + padding(element.cmd.split(' ')[0],30) + "\t" + element.desc;
-    }
-    console.log(result);
-}
-
-let padding = function (str, pad, char) {
-    char = char || ' ';
-    if (str.length >= pad) {
-        return str;
-    }
-    return str + Array(pad-str.length).join(char);
-}
-
-
-let showHelpForCommands = function (elements, showFull) {
-    showFull = showFull || false;
-    elements.forEach(element => {
-        showHelpForCommand(element, showFull);
-    });
-}
-
-let showHelpGlobal = () => {
-    console.log(content.usage);
-    console.log(content.commandsHeader);
-    showHelpForCommands(commandList);
-    console.log(content.optionsHeader);
-    // options
-    console.log(content.helpFooter);
 }
 
 // console.log(args, options, command);
@@ -111,7 +75,7 @@ if (command){
     let commandConfig = getCommandConfig(command);
     if (commandConfig){
         if (options.h){ 
-            showHelpForCommand(commandConfig, true);
+            help.showHelpForCommand(commandConfig, true);
         } else {
                     // exec comand
            // mapAndExecute(commandConfig);
@@ -123,7 +87,7 @@ if (command){
         let relatedCommands = getRelatedCommands(command);        
         if(relatedCommands) {
             console.log(content.relatedCmds);
-            showHelpForCommands(relatedCommands)
+            help.showHelpForCommands(relatedCommands)
         }
         console.log(content.errFooter);
     }
@@ -131,6 +95,6 @@ if (command){
     if (options.version) {
         console.log(pkg.version);
     } else {
-        showHelpGlobal();
+        help.showHelpGlobal(commandList);
     }
 }
