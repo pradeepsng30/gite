@@ -1,3 +1,4 @@
+#!/usr/bin/env node
 'use strict';
 const input_args = require('yargs').argv;
 const args = input_args._
