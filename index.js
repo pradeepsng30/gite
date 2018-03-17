@@ -65,20 +65,30 @@ let gitExec = (cmds) => {
 //     .action(yo);
 
 
-//     program
-//     .command('exec <cmd>')
-//     .description('run the given remote command')
-//     .action(function(cmd) {
-//       console.log('exec "%s"', cmd);
-//     });
+    program
+    .command('exec <cmd>')
+    .description('run the given remote command')
+    .action(function(cmd) {
+      console.log('exec "%s"', cmd);
+    });
 
     program
-    .version(pkg.version)
     .command('ju <cmds>')
     .description('deploy the given env')
+    .option('-r, --recurse', 'mast command')
     .action(gitExec);
 
     
+    program
+    .version(pkg.version)
+    .option('-p, --peppers', 'Add peppers')
+    .option('-P, --pineapple', 'Add pineapple')
+    .option('-b, --bbq-sauce', 'Add bbq sauce')
+    .option('-c, --cheese [type]', 'Add the specified type of cheese [marble]', 'marble')
+
+    program
+    .command('*')
+    .action();
 
 program.parse(process.argv);
 
