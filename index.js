@@ -3,8 +3,9 @@ const input_args = require('yargs').argv;
 const args = input_args._
 const options = input_args;
 const command = args[0];
-
+const content = require('./content');
 const commandList = require('./config').commandList;
+const pkg = require('./package.json');
 
 let getRelatedCommands = (command) => {
     return commandList.filter(element => {
@@ -49,7 +50,6 @@ let showHelpForCommands = function (elements, showFull) {
 }
 
 let showHelpGlobal = () => {
-    let content = require('./content')
     console.log(content.usage);
     console.log(content.commandsHeader);
     showHelpForCommands(commandList);
@@ -64,7 +64,35 @@ let showHelpGlobal = () => {
 // console.log(getCommandConfig(command));
 // console.log(commandList);
 //showHelpGlobal();
-showHelpForCommand(commandList[0], true);
+//showHelpForCommand(commandList[0], true);
 //console.log('a','b');
 //console.log(padding('hjgshjgeskhgskjhgskgjh',10),'t');
 
+let commandConfig = getCommandConfig(command);
+
+if (command){
+    if (commandConfig){
+        if (options.help){
+            showHelpForCommand(commandConfig, true);
+        } else {
+                    // exec comand
+
+            mapAndExecute(commandConfig);
+        }
+    }
+    else {
+        let relatedCommands = getRelatedCommands(command);
+        console.log("'" + command + "'", content.cmdNotFound);
+        if(relatedCommands) {
+            console.log(content.relatedCmds);
+            showHelpForCommands(relatedCommands)
+        }
+        console.log(content.errFooter);
+    }
+} else {
+    if (options.version) {
+        console.log(pkg.version);
+    } else {
+        showHelpGlobal();
+    }
+}
