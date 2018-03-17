@@ -1,5 +1,6 @@
 module.exports = {
-    'usage': "\tusage: **egit** [options] [command]",
-    'optionsHeader': '\toptions:\n'
-    'commandsHeader': '\tcommands:\n'
+    'usage': "\nusage: egit  [options] <command> [<args>]",
+    'optionsHeader': '\noptions:\n',
+    'commandsHeader': '\ncommands:\n',
+    'helpFooter': '\n For more detailed help for a command run `egit -h <command>`\n '
 };
