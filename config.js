@@ -1,22 +1,24 @@
 module.exports = {
     commandList: [
         {
-            "cmd": "change-last-auth <name> <email>",
+            "cmd": "change-last-auth",
+            "args": "<name> <email>",
             "desc": "Change name and email in last commit",
             "execCommands": [
               {
-                "command": "git",
-                "arguments": "commit --amend --author \"{{name}} <{{email}}>\""
+                "newcmd": "git",
+                "args": "commit --amend --author \"{{name}} <{{email}}>\""
               }
             ],
           },
           {
             "cmd": "show-commit [n]",
+            "args": "[n]",
             "desc": "shows last commit",
             "execCommands": [
               {
-                "execCommans": "git",
-                "arguments": "log -n{{n}} -p"
+                "newcmd": "git",
+                "args": "log -n1 -p"
               }
             ]
           }
