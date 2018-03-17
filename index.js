@@ -50,6 +50,12 @@ let gitExec = (cmds) => {
     exec('git ' + cmds ,output);
 }
 
+
+let deff = function (a,b) {
+    console.log('a',a);
+    console.log('b',b);
+}
+
 // program
 //     .version(pkg.version)
 //     .command('list [directory]')
@@ -66,16 +72,21 @@ let gitExec = (cmds) => {
 
 
     program
-    .command('exec <cmd>')
+    .command('exec [cmd=9]')
     .description('run the given remote command')
     .action(function(cmd) {
       console.log('exec "%s"', cmd);
     });
 
     program
-    .command('ju <cmds>')
-    .description('deploy the given env')
-    .option('-r, --recurse', 'mast command')
+    .command('ju [cmd]')
+    .description('deploy the given env');
+
+
+    program
+    .option('-ui','ui specific');
+
+    program
     .action(gitExec);
 
     
@@ -90,6 +101,22 @@ let gitExec = (cmds) => {
     .command('*')
     .action();
 
+const cmdList = require('./config').commandList;
+
+const addCommands = (cmdList, program) => {
+    cmdList.forEach(function(element,i) {
+
+        //console.log(i);
+        //console.log(element.cmd, element.desc);
+        program
+        .command(element.cmd)
+        .description(element.desc)
+        //.option('-k','kk kkl')
+        .action(function(){ return deff(element,arguments); });
+    }, this);
+}
+
+addCommands(cmdList,program)
 program.parse(process.argv);
 
 
