@@ -68,6 +68,9 @@ let injectValues = function (str, values) {
         let varString = textToreplace.match(pattern2)[0];
         let varName = varString.slice(1,-1);
         let varVal = values[varName];
+        if(varVal && varVal.indexOf(' ')) {
+            varVal = "\'" + varVal + "\'"; 
+        }
         let replacement = (varVal === undefined) ? "" : textToreplace.slice(2,-2).replace(varString, varVal.toString());
         console.log(textToreplace, varString, varName, varVal, replacement);
         str = str.replace(textToreplace, replacement); 
