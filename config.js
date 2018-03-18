@@ -21,6 +21,18 @@ module.exports = {
                 "args": "log {{-n$n$}} -p"
               }
             ]
+          },
+          {
+            "cmd": "test",
+            "args": "<arg1>",
+            "desc": "commit",
+            "execCommands": [
+              {
+                "newcmd": "git",
+                "args": "commit -m {{$arg1$}} "
+              }
+            ]
           }
+          
     ]
 }
