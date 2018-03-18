@@ -7,7 +7,7 @@ module.exports = {
             "execCommands": [
               {
                 "newcmd": "git",
-                "args": "commit --amend --author \"{{name}} <{{email}}>\""
+                "args": "commit --amend --author \"{{$name$}} <{{$email$}}>\""
               }
             ],
           },
@@ -18,7 +18,7 @@ module.exports = {
             "execCommands": [
               {
                 "newcmd": "git",
-                "args": "log -n1 -p"
+                "args": "log {{-n$n$}} -p"
               }
             ]
           }

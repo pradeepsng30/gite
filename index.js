@@ -23,30 +23,19 @@ let getCommandConfig = function (command) {
     })[0];
 }
 
-// console.log(args, options, command);
-
-// console.log(getRelatedCommands(command));
-// console.log(getCommandConfig(command));
-// console.log(commandList);
-//showHelpGlobal();
-//showHelpForCommand(commandList[0], true);
-//console.log('a','b');
-//console.log(padding('hjgshjgeskhgskjhgskgjh',10),'t');
-
-
 let mapAndExecute = function (element) {
     let cmdsToexec = element.execCommands.map(cmdObj => {
         return
     });
 }
 
-let validate = function (element) {
+let validateAndParse = function (element) {
     let result = {};
     if (element.args) {
-        console.log(args);
+        //console.log(args);
         let requiredArgs = element.args.split(' ').forEach( (arg,i) => {
             let argName = '';
-            if(arg.length <= 3) {
+            if(arg.length < 3) {
                 throw Error("invalid arg list in config");
             }
             argName = arg.slice(1,-1);
@@ -64,11 +53,33 @@ let validate = function (element) {
                 throw Error("invalid arg list in config");
             }
         });
-
     }
-
     return result;
-    
+}
+
+
+let injectValues = function (str, values) {
+    console.log(values);
+    let pattern = /{{.*?}}/g ;
+    let pattern2 = /\$.*\$/g;
+    let textsToreplace = str.match(pattern);
+    textsToreplace.forEach(textToreplace => {
+        let varString = textToreplace.match(pattern2)[0];
+        let varName = varString.slice(1,-1);
+        let varVal = values[varName];
+        let replacement = (varVal === undefined) ? "" : textToreplace.slice(2,-2).replace(varString, varVal.toString());
+        console.log(textToreplace, varString, varName, varVal, replacement);
+        str = str.replace(textToreplace, replacement); 
+    });
+    return str.replace(/\s+/g,' ').trim();
+}
+
+let getNewCmds = function (element, argObj) {
+    return element.execCommands.map(cmdObj => {
+        let cmd = cmdObj.newcmd + " " + cmdObj.args;
+        console.log("PPP", cmd);
+        return injectValues(cmd, argObj);
+    });
 }
 
 if (command){
@@ -79,7 +90,8 @@ if (command){
         } else {
                     // exec comand
            // mapAndExecute(commandConfig);
-           console.log(validate(commandConfig));
+           //console.log(validateAndParse(commandConfig));
+           console.log(getNewCmds(commandConfig, validateAndParse(commandConfig)));
         }
     }
     else {
