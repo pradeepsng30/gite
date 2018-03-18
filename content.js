@@ -1,5 +1,5 @@
 module.exports = {
-    'usage': "\nusage: egit  [options] <command> [<args>]",
+    'usage': "\nusage: egit  <command> [<args>] [-options]",
     'optionsHeader': '\noptions:\n',
     'commandsHeader': '\ncommands:\n',
     'helpFooter': '\n For more detailed help for a command run `egit -h <command>`\n ',
