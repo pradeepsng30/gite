@@ -60,11 +60,11 @@ let validateAndParse = function (element) {
 
 
 let injectValues = function (str, values) {
-    console.log(values);
+    // console.log(values);
     let pattern = /{{.*?}}/g ;
     let pattern2 = /\$.*\$/g;
     let textsToreplace = str.match(pattern);
-    textsToreplace.forEach(textToreplace => {
+    textsToreplace && textsToreplace.forEach(textToreplace => {
         let varString = textToreplace.match(pattern2)[0];
         let varName = varString.slice(1,-1);
         let varVal = values[varName];
@@ -72,7 +72,7 @@ let injectValues = function (str, values) {
             varVal = "\'" + varVal + "\'"; 
         }
         let replacement = (varVal === undefined) ? "" : textToreplace.slice(2,-2).replace(varString, varVal.toString());
-        console.log(textToreplace, varString, varName, varVal, replacement);
+        // console.log(textToreplace, varString, varName, varVal, replacement);
         str = str.replace(textToreplace, replacement); 
     });
     return str.replace(/\s+/g,' ').trim();
@@ -81,7 +81,7 @@ let injectValues = function (str, values) {
 let getNewCmds = function (element, argObj) {
     return element.execCommands.map(cmdObj => {
         let cmd = cmdObj.newcmd + " " + cmdObj.args;
-        console.log("PPP", cmd);
+        // console.log("PPP", cmd);
         return injectValues(cmd, argObj);
     });
 }
