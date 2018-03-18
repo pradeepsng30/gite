@@ -10,6 +10,7 @@ const content = require('./content');
 const commandList = require('./config').commandList;
 const pkg = require('./package.json');
 const help = require('./help');
+const execute = require('./executer');
 
 let getRelatedCommands = (command) => {
     return commandList.filter(element => {
@@ -88,10 +89,8 @@ if (command){
         if (options.h){ 
             help.showHelpForCommand(commandConfig, true);
         } else {
-                    // exec comand
-           // mapAndExecute(commandConfig);
-           //console.log(validateAndParse(commandConfig));
-           console.log(getNewCmds(commandConfig, validateAndParse(commandConfig)));
+           let cmdsToExec = getNewCmds(commandConfig, validateAndParse(commandConfig));
+           execute(cmdsToExec);
         }
     }
     else {
