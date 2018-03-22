@@ -10,8 +10,8 @@ let getTextFromArray = function(arr, prefix){
 };
 
 let getLongDesc = function (element) {
-let longDesc = element.longDesc;
-let text ="";
+    let longDesc = element.longDesc;
+    let text ="";
     if (!longDesc){
         return text;
     } 

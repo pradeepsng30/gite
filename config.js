@@ -62,7 +62,7 @@ module.exports = {
             ]
             },
         {
-            "cmd": "file-version",
+            "cmd": "change-file",
             "desc": "Changes file to given branch/commit (tree) state. Changes fetched are unstaged.",
             "args": "<path> <tree>",
             "execCommands": [
