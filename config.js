@@ -1,7 +1,7 @@
 module.exports = {
     globalOptions: [
         {
-           "option": "--help, -h",
+           "option": "-h",
             "desc": "Help. global or command specific"
         },
         {
