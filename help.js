@@ -58,12 +58,24 @@ let showHelpForCommands = function (elements, showFull) {
     });
 }
 
-let showHelpGlobal = (commandList) => {
+let showHelpForOptions = function (elements) {
+    elements.forEach(element => {
+        showHelpForOption(element);
+    });
+}
+
+let showHelpForOption = function (element) {
+    let result ="";
+    result = "\t" + padding(element.option, 30) + "\t" + element.desc;
+    console.log(result);
+}
+
+let showHelpGlobal = (config) => {
     console.log(content.usage);
     console.log(content.commandsHeader);
-    showHelpForCommands(commandList);
+    showHelpForCommands(config.commandList);
     console.log(content.optionsHeader);
-    // TODO : options
+    showHelpForOptions(config.globalOptions);
     console.log(content.helpFooter);
 }
 

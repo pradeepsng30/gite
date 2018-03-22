@@ -7,7 +7,8 @@ const options = input_args;
 const command = args[0];
 
 const content = require('./content');
-const commandList = require('./config').commandList;
+const config = require('./config');
+const commandList = config.commandList;
 const pkg = require('./package.json');
 const help = require('./help');
 const execute = require('./executer');
@@ -109,6 +110,6 @@ if (command){
     if (options.version) {
         console.log(pkg.version);
     } else {
-        help.showHelpGlobal(commandList);
+        help.showHelpGlobal(config);
     }
 }

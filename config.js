@@ -1,4 +1,14 @@
 module.exports = {
+    globalOptions: [
+        {
+            option: "--help, -h",
+            desc: "Help. global or command specific"
+        },
+        {
+            option: "--show, -s",
+            desc: "show git commands to be executed. Doesn't execute them"
+        }
+    ],
     commandList: [
         {
             "cmd": "branch-copy",
