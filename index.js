@@ -87,6 +87,13 @@ let getNewCmds = function (element, argObj) {
     });
 }
 
+let showCmds = function (cmds) {
+    console.log(content.showCmdsHeader);
+    cmds.forEach(cmd => {
+        console.log("\t" + cmd);
+    });
+}
+
 if (command){
     let commandConfig = getCommandConfig(command);
     if (commandConfig){
@@ -94,7 +101,11 @@ if (command){
             help.showHelpForCommand(commandConfig, true);
         } else {
            let cmdsToExec = getNewCmds(commandConfig, validateAndParse(commandConfig));
-           execute(cmdsToExec);
+           if(options.s || options.show){
+               showCmds(cmdsToExec);
+           } else {
+            execute(cmdsToExec);            
+           }
         }
     }
     else {
@@ -113,3 +124,4 @@ if (command){
         help.showHelpGlobal(config);
     }
 }
+// TODO move to try catch

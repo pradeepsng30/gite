@@ -1,12 +1,16 @@
 module.exports = {
     globalOptions: [
         {
-            option: "--help, -h",
-            desc: "Help. global or command specific"
+           "option": "--help, -h",
+            "desc": "Help. global or command specific"
         },
         {
-            option: "--show, -s",
-            desc: "show git commands to be executed. Doesn't execute them"
+            "option": "--show, -s",
+            "desc": "show git commands to be executed. Doesn't execute them"
+        },
+        {
+            "option": "--version, -v",
+            "desc": "Show current egit version"
         }
     ],
     commandList: [
