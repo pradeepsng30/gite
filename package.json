@@ -1,19 +1,38 @@
 {
   "name": "egit",
   "version": "1.0.0",
-  "description": "easy git",
+  "description": "Wrapper for git commands. ",
   "main": "index.js",
   "preferGlobal": true,
   "bin": {
     "egit": "./index.js"
   },
+  "keywords": [
+    "git",
+    "github",
+    "wrapper",
+    "git wrapper",
+    "node cli",
+    "easy-git",
+    "easy git",
+    "egit",
+    "git commands"
+  ],
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "Pradeep Singh",
-  "license": "ISC",
+  "author": "Pradeep Singh <pradeepsng30@yahoo.com>",
+  "homepage": "https://github.com/pradeepsng30/egit",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/pradeepsng30/egit/issues",
+    "email": "pradeepsng30@yahoo.com"
+  },
   "dependencies": {
     "child_process": "^1.0.2",
     "yargs": "^11.0.0"
+  },
+  "engines": {
+    "node": ">=0.2.5"
   }
 }
