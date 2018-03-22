@@ -1,7 +1,7 @@
 {
-  "name": "egit",
+  "name": "git-easy",
   "version": "1.0.0",
-  "description": "Wrapper for git commands. ",
+  "description": "Wrapper for git. Git is really easy now.",
   "main": "index.js",
   "preferGlobal": true,
   "bin": {
