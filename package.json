@@ -5,7 +5,7 @@
   "main": "index.js",
   "preferGlobal": true,
   "bin": {
-    "egit": "./index.js"
+    "gite": "./index.js"
   },
   "keywords": [
     "git",
@@ -15,17 +15,17 @@
     "node cli",
     "easy-git",
     "easy git",
-    "egit",
+    "gite",
     "git commands"
   ],
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Pradeep Singh <pradeepsng30@yahoo.com>",
-  "homepage": "https://github.com/pradeepsng30/egit",
+  "homepage": "https://github.com/pradeepsng30/gite",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/pradeepsng30/egit/issues",
+    "url": "https://github.com/pradeepsng30/gite/issues",
     "email": "pradeepsng30@yahoo.com"
   },
   "dependencies": {

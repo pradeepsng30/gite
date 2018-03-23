@@ -22,7 +22,7 @@ let getLongDesc = function (element) {
         text = text +'\n\nOptional Arguments:' + getTextFromArray(longDesc.optional, '\t');
     }
     if (longDesc.samples && longDesc.samples.length > 0){
-        text = text +'\n\nSamples:' + getTextFromArray(longDesc.samples, `\t egit ${element.cmd} `);
+        text = text +'\n\nSamples:' + getTextFromArray(longDesc.samples, `\t gite ${element.cmd} `);
     }
     text = text +'\n\n';
     return text;
@@ -32,7 +32,7 @@ let showHelpForCommand = function (element, showFull) {
     showFull = showFull || false;
     let result ="";
     if(showFull) {
-        result = "\n" + "usage:\t egit " + element.cmd +  (element.args ? " " + element.args : "") + "\n\n";
+        result = "\n" + "usage:\t gite " + element.cmd +  (element.args ? " " + element.args : "") + "\n\n";
         result = result + "Description:\n" + element.desc + "\n";
         result = result + (element.longDesc ? getLongDesc(element): "");
     }

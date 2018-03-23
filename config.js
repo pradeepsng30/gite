@@ -10,7 +10,7 @@ module.exports = {
         },
         {
             "option": "--version, -v",
-            "desc": "Show current egit version"
+            "desc": "Show current gite version"
         }
     ],
     commandList: [
