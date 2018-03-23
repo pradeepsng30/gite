@@ -6,7 +6,7 @@ Makes git simpler.
 * Executes git commands at the end to achieve desired result. 
 * Exhaustive help menu with sample commands
 
-#### Installation
+### Installation
 `npm install -g git-easy`
 
 Prequisites:
@@ -14,7 +14,7 @@ Prequisites:
 * npm `v2+`
 * git `v2+`
 
-#### Run
+### Run
 Run by executing command 
 `gite` on console.
 
