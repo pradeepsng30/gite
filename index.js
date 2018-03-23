@@ -94,34 +94,47 @@ let showCmds = function (cmds) {
     });
 }
 
-if (command){
-    let commandConfig = getCommandConfig(command);
-    if (commandConfig){
-        if (options.h){ 
-            help.showHelpForCommand(commandConfig, true);
-        } else {
-           let cmdsToExec = getNewCmds(commandConfig, validateAndParse(commandConfig));
-           if(options.s || options.show){
-               showCmds(cmdsToExec);
-           } else {
-            execute(cmdsToExec);            
-           }
-        }
-    }
-    else {
-        console.log("'" + command + "'", content.cmdNotFound);
-        let relatedCommands = getRelatedCommands(command);        
-        if(relatedCommands) {
-            console.log(content.relatedCmds);
-            help.showHelpForCommands(relatedCommands)
-        }
-        console.log(content.errFooter);
-    }
-} else {
-    if (options.version) {
+let main  = function () {
+    if (options.version || options.v) {
         console.log(pkg.version);
     } else {
-        help.showHelpGlobal(config);
+        if (command){
+            let commandConfig = getCommandConfig(command);
+            if (commandConfig){
+                if (options.h){ 
+                    help.showHelpForCommand(commandConfig, true);
+                } else {
+                let cmdsToExec = getNewCmds(commandConfig, validateAndParse(commandConfig));
+                if(options.s || options.show){
+                    showCmds(cmdsToExec);
+                } else {
+                    execute(cmdsToExec);            
+                }
+                }
+            }
+            else {
+                console.log("'" + command + "'", content.cmdNotFound);
+                let relatedCommands = getRelatedCommands(command);        
+                if(relatedCommands && relatedCommands.length > 0) {
+                    console.log(content.relatedCmds);
+                    help.showHelpForCommands(relatedCommands)
+                }
+                console.log(content.errFooter);
+            }
+        } else {
+            help.showHelpGlobal(config);
+        }
     }
 }
+
+
+try {
+    main();
+} catch (e) {
+    console.log('\x1b[31m%s\x1b[0m', 'Error occured');
+    console.log(e.toString())
+    console.log(content.errFooter);
+    
+}
+
 // TODO move to try catch
