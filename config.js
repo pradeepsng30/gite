@@ -6,7 +6,7 @@ module.exports = {
         },
         {
             "option": "--show, -s",
-            "desc": "show git commands to be executed. Doesn't execute them"
+            "desc": "Show git commands to be executed. Doesn't execute them"
         },
         {
             "option": "--version, -v",
@@ -124,7 +124,7 @@ module.exports = {
         {
             "cmd": "blame",
             "args": "<path>",            
-            "desc": "shows last revision details for each line with commit id, author and date of change.",
+            "desc": "Shows last revision details for each line with commit id, author and date of change.",
             "longDesc" : {
                 "required": [
                     '<path>:\t path to file',
@@ -143,7 +143,7 @@ module.exports = {
         },
         {
             "cmd": "re-commit",
-            "desc": "add current changes (staged/unstaged) to last commit.",
+            "desc": "Add current changes (staged/unstaged) to last commit.",
             "longDesc" : {
                 "samples": [
                     ' ',
@@ -158,7 +158,7 @@ module.exports = {
         },
         {
             "cmd": "discard-commits",
-            "desc": "discard all local commits on this branch, to make the local branch identical to the `upstream` of this branch",
+            "desc": "Discard all local commits on this branch, to make the local branch identical to the `upstream` of this branch",
             "longDesc" : {
                 "samples": [
                     ' ',
@@ -208,7 +208,7 @@ module.exports = {
         {
             "cmd": "remove-commit",
             "args": "<comm_id>",                        
-            "desc": "Removes the provided commit. WARNING: use only if commit(s) after this are not dependent on this commit",
+            "desc": "Removes the provided commit from current tree. WARNING: use only if commit(s) after this are not dependent on this commit",
             "longDesc" : {
                 "required": [
                     '<comm_id>:\t sha1 commit id.',
