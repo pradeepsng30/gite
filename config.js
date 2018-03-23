@@ -20,7 +20,7 @@ module.exports = {
             "desc": "Create and switch to a new branch as a copy of current or source branch (if provided)",
             "longDesc" : {
                 "required": [
-                    '<new_branch>:\t desired name of the new branch'
+                    '<new_branch>:\t desired name of the new (copy) branch'
                 ],
                 "optional": [
                     '[source]:\t source branch name. May refer to other repo branch using remote/branch_name.'
@@ -42,6 +42,18 @@ module.exports = {
         "cmd": "branch-new",
         "args": "<new_branch> [source]",
         "desc": "Create and switch to a new branch as a copy of current or source branch (if provided)",
+        "longDesc" : {
+            "required": [
+                '<new_branch>:\t desired name of the new branch'
+            ],
+            "optional": [
+                '[source]:\t source branch name. May refer to other repo branch using remote/branch_name.'
+            ],
+            "samples": [
+                'master2 upstream/master',
+                 'test_branch'
+                ]
+        },
         "execCommands": [
             {
             "newcmd": "git",
@@ -53,6 +65,18 @@ module.exports = {
         "cmd": "branch-keep-copy",
         "args": "<new_branch> [source]",
         "desc": "Create and keep aside (don't switch) a new branch as a copy of current or source branch (if provided)",
+        "longDesc" : {
+            "required": [
+                '<new_branch>:\t desired name of the new branch'
+            ],
+            "optional": [
+                '[source]:\t source branch name. May refer to other repo branch using remote/branch_name.'
+            ],
+            "samples": [
+                'master2 upstream/master',
+                 'test_branch'
+                ]
+        },
         "execCommands": [
             {
                 "newcmd": "git",
@@ -77,8 +101,19 @@ module.exports = {
             },
         {
             "cmd": "change-file",
+            "args": "<path> <tree>",            
             "desc": "Changes file to given branch/commit (tree) state. Changes fetched are unstaged.",
-            "args": "<path> <tree>",
+            "longDesc" : {
+                "required": [
+                    '<path>:\t path to file',
+                    '<tree>:\t branch or commit id. From which file state is desired.' 
+                ],
+                "samples": [
+                    './text.txt upstream/master',
+                    './text.txt develop',
+                    'index.js 5ac1d4'
+                    ]
+            },
             "execCommands": [
                 {
                 "newcmd": "git",
@@ -88,8 +123,17 @@ module.exports = {
         },
         {
             "cmd": "blame",
+            "args": "<path>",            
             "desc": "shows last revision details for each line with commit id, author and date of change.",
-            "args": "<path>",
+            "longDesc" : {
+                "required": [
+                    '<path>:\t path to file',
+                ],
+                "samples": [
+                    'index.js',
+                     'src/main.py'
+                    ]
+            },
             "execCommands": [
                 {
                 "newcmd": "git",
@@ -100,6 +144,11 @@ module.exports = {
         {
             "cmd": "re-commit",
             "desc": "add current changes (staged/unstaged) to last commit.",
+            "longDesc" : {
+                "samples": [
+                    ' ',
+                    ]
+            },
             "execCommands": [
                 {
                 "newcmd": "git",
@@ -110,6 +159,11 @@ module.exports = {
         {
             "cmd": "discard-commits",
             "desc": "discard all local commits on this branch, to make the local branch identical to the `upstream` of this branch",
+            "longDesc" : {
+                "samples": [
+                    ' ',
+                    ]
+            },
             "execCommands": [
                 {
                 "newcmd": "git",
@@ -120,6 +174,11 @@ module.exports = {
         {
             "cmd": "discard-all-changes",
             "desc": "Discard all local changes. Changes are UNRECOVERABLE",
+            "longDesc" : {
+                "samples": [
+                    ' ',
+                    ]
+            },
             "execCommands": [
                 {
                 "newcmd": "git",
@@ -131,6 +190,14 @@ module.exports = {
             "cmd": "discard-file-changes",
             "args": "<path>",                        
             "desc": "Discard all local changes to provided file. Changes are UNRECOVERABLE",
+            "longDesc" : {
+                "required": [
+                    '<path>:\t path to file',
+                ],
+                "samples": [
+                    './text.js',
+                    ]
+            },
             "execCommands": [
                 {
                 "newcmd": "git",
@@ -142,6 +209,14 @@ module.exports = {
             "cmd": "remove-commit",
             "args": "<comm_id>",                        
             "desc": "Removes the provided commit. WARNING: use only if commit(s) after this are not dependent on this commit",
+            "longDesc" : {
+                "required": [
+                    '<comm_id>:\t sha1 commit id.',
+                ],
+                "samples": [
+                    '3ar454',
+                    ]
+            },
             "execCommands": [
                 {
                 "newcmd": "git",
@@ -152,6 +227,11 @@ module.exports = {
         {
             "cmd": "undo",
             "desc": "shelves all uncommited changes. stashes them.",
+            "longDesc" : {
+                "samples": [
+                    ' ',
+                    ]
+            },
             "execCommands": [
                 {
                 "newcmd": "git",
@@ -162,6 +242,11 @@ module.exports = {
         {
             "cmd": "redo",
             "desc": "applies last shelved changes. Removes from shelf",
+            "longDesc" : {
+                "samples": [
+                    ' ',
+                    ]
+            },
             "execCommands": [
                 {
                 "newcmd": "git",
