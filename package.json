@@ -22,10 +22,14 @@
     "git commands"
   ],
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "lint": "eslint --ignore-path .gitignore ."
   },
   "author": "Pradeep Singh <pradeepsng30@yahoo.com>",
   "homepage": "https://github.com/pradeepsng30/gite",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/pradeepsng30/gite.git"
+  },
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/pradeepsng30/gite/issues",
@@ -37,5 +41,8 @@
   },
   "engines": {
     "node": ">=0.2.5"
+  },
+  "devDependencies": {
+    "eslint": "^4.19.1"
   }
 }
