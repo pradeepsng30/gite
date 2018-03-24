@@ -127,7 +127,7 @@ module.exports = {
             "desc": "Shows last revision details for each line with commit id, author and date of change.",
             "longDesc" : {
                 "required": [
-                    '<path>:\t path to file',
+                    '<path>:\t path to file'
                 ],
                 "samples": [
                     'index.js',
@@ -192,7 +192,7 @@ module.exports = {
             "desc": "Discard all local changes to provided file. Changes are UNRECOVERABLE",
             "longDesc" : {
                 "required": [
-                    '<path>:\t path to file',
+                    '<path>:\t path to file'
                 ],
                 "samples": [
                     './text.js',
@@ -211,7 +211,7 @@ module.exports = {
             "desc": "Removes the provided commit from current tree. WARNING: use only if commit(s) after this are not dependent on this commit",
             "longDesc" : {
                 "required": [
-                    '<comm_id>:\t sha1 commit id.',
+                    '<comm_id>:\t sha1 commit id.'
                 ],
                 "samples": [
                     '3ar454',
@@ -275,7 +275,7 @@ module.exports = {
             "desc": "changes message of last commit",
             "longDesc" : {
                 "required": [
-                    '<msg>:\t new message',
+                    '<msg>:\t new message'
                 ],
                 "samples": [
                     '\'new commit message\'',
@@ -294,7 +294,7 @@ module.exports = {
             "desc": "remove changes of file from last commit",
             "longDesc" : {
                 "required": [
-                    '<path>:\t path to file',
+                    '<path>:\t path to file'
                 ],
                 "samples": [
                     './text.txt',
@@ -315,7 +315,46 @@ module.exports = {
                 }
             ]
         },
+        {
+            "cmd": "rm-branch",
+            "args": "<branch>",                        
+            "desc": "remove branch from local",
+            "longDesc" : {
+                "required": [
+                    '<branch>:\t branch'
+                ],
+                "samples": [
+                    'test',
+                    ]
+            },
+            "execCommands": [
+                {
+                "newcmd": "git",
+                "args": "branch -D {{$branch$}}"
+                }
+            ]
+        },
+        {
+            "cmd": "rm-branch-remote",
+            "args": "<remote> <branch>",                        
+            "desc": "remove branch from provided remote",
+            "longDesc" : {
+                "required": [
+                    '<remote>:\t remote',
+                    '<branch>:\t branch name'
+                ],
+                "samples": [
+                    'origin test',
+                    ]
+            },
+            "execCommands": [
+                {
+                "newcmd": "git",
+                "args": "push origin --delete {{$remote$}}/{{$branch$}}"
+                }
+            ]
+        }
         
-          
+        
     ]
 }
