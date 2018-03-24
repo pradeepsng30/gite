@@ -46,5 +46,3 @@ Fork the repo and send PR's. Contributions are welcomed in the form of
 * Aliases or better names for commands.
 * Better description to commands.
 * Test Case.
-
-
