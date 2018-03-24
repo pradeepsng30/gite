@@ -255,21 +255,6 @@ module.exports = {
             ],
         },
         {
-            'cmd': 'redo',
-            'desc': 'applies last shelved changes. Removes from shelf',
-            'longDesc' : {
-                'samples': [
-                    ' ',
-                ],
-            },
-            'execCommands': [
-                {
-                    'newcmd': 'git',
-                    'args': 'stash pop stash@{0}',
-                },
-            ],
-        },
-        {
             'cmd': 'change-msg',
             'args': '<msg>',                        
             'desc': 'changes message of last commit',
@@ -351,6 +336,75 @@ module.exports = {
                 {
                     'newcmd': 'git',
                     'args': 'push {{$remote$}} --delete {{$branch$}}',
+                },
+            ],
+        },
+        {
+            'cmd': 'squash',
+            'args': '<n>',                        
+            'desc': 'squashes (combines) last \'n\' commits with self generated squash message',
+            'longDesc' : {
+                'required': [
+                    '<n>:\t last n commits to be combined',
+                ],
+                'samples': [
+                    '3',
+                ],
+            },
+            'execCommands': [
+                {
+                    'newcmd': 'git',
+                    'args': 'reset --hard HEAD~{{$n$}}',
+                },
+                {
+                    'newcmd': 'git',
+                    'args': 'merge --squash HEAD@{1}',
+                },
+                {
+                    'newcmd': 'git',
+                    'args': 'commit --no-edit',
+                },
+            ],
+        },
+        {
+            'cmd': 'squash-all',
+            'desc': 'squashes (combines) all unpushed commits with self generated squash message',
+            'longDesc' : {
+                'samples': [
+                    ' ',
+                ],
+            },
+            'execCommands': [
+                {
+                    'newcmd': 'git',
+                    'args': 'reset --hard @{u}',
+                },
+                {
+                    'newcmd': 'git',
+                    'args': 'merge --squash HEAD@{1}',
+                },
+                {
+                    'newcmd': 'git',
+                    'args': 'commit --no-edit',
+                },
+            ],
+        },
+        {
+            'cmd': 'rm-file',
+            'args': '<path>',                        
+            'desc': 'remove file from git. Doesn\'t delete it',
+            'longDesc' : {
+                'required': [
+                    '<path>:\t path to file',
+                ],
+                'samples': [
+                    './text.txt',
+                ],
+            },
+            'execCommands': [
+                {
+                    'newcmd': 'git',
+                    'args': 'rm --cached {{$path$}}',
                 },
             ],
         },
