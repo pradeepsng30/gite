@@ -253,7 +253,69 @@ module.exports = {
                 "args": "stash pop stash@{0}"
                 }
             ]
-        }
+        },
+        {
+            "cmd": "redo",
+            "desc": "applies last shelved changes. Removes from shelf",
+            "longDesc" : {
+                "samples": [
+                    ' ',
+                    ]
+            },
+            "execCommands": [
+                {
+                "newcmd": "git",
+                "args": "stash pop stash@{0}"
+                }
+            ]
+        },
+        {
+            "cmd": "change-msg",
+            "args": "<msg>",                        
+            "desc": "changes message of last commit",
+            "longDesc" : {
+                "required": [
+                    '<msg>:\t new message',
+                ],
+                "samples": [
+                    '\'new commit message\'',
+                    ]
+            },
+            "execCommands": [
+                {
+                "newcmd": "git",
+                "args": "commit --amend -m {{$msg$}}"
+                }
+            ]
+        },
+        {
+            "cmd": "rm-file-last-commit",
+            "args": "<path>",                        
+            "desc": "remove changes of file from last commit",
+            "longDesc" : {
+                "required": [
+                    '<path>:\t path to file',
+                ],
+                "samples": [
+                    './text.txt',
+                    ]
+            },
+            "execCommands": [
+                {
+                "newcmd": "git",
+                "args": "checkout HEAD^ {{$path$}}"
+                },
+                {
+                    "newcmd": "git",
+                    "args": "add {{$path$}}"
+                },
+                {
+                    "newcmd": "git",
+                    "args": "commit --amend --no-edit"
+                }
+            ]
+        },
+        
           
     ]
 }
