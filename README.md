@@ -1,4 +1,4 @@
-# gite: git-easy
+# gite: git-easy [![Build Status](https://travis-ci.org/pradeepsng30/gite.svg?branch=master)](https://travis-ci.org/pradeepsng30/gite)
 A wrapper for git commands.
 
 Makes git simpler. 
