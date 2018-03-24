@@ -350,8 +350,8 @@ module.exports = {
             "execCommands": [
                 {
                 "newcmd": "git",
-                "args": "push origin --delete {{$remote$}}/{{$branch$}}"
-                }
+                "args": "push {{$remote$}} --delete {{$branch$}}"
+            }
             ]
         }
         
