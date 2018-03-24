@@ -13,5 +13,3 @@ let exec = function(cmds) {
     }
 };
 module.exports = exec;
-
-// exec(['git status', 'git branch', 'git help']);

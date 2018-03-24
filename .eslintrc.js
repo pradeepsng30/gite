@@ -6,6 +6,8 @@ module.exports = {
         "linebreak-style": ["error", "unix"],
         "quotes": ["warn", "single"],
         "semi": ["error", "always"],
+        "no-multiple-empty-lines": ["error", { "max": 2, "maxEOF": 1 }],
+        "eol-last": ["error", "always"],
 
         // override default options for rules from base configurations
         "comma-dangle": ["error", "always"],
