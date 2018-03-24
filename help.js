@@ -2,21 +2,21 @@
 const content = require('./content');
 
 let getTextFromArray = function(arr, prefix){
-    let text = "";
+    let text = '';
     arr.forEach(el => {
-        text = text + '\n' + prefix + el.toString()
-    })
+        text = text + '\n' + prefix + el.toString();
+    });
     return text;
 };
 
 let getLongDesc = function (element) {
     let longDesc = element.longDesc;
-    let text ="";
+    let text ='';
     if (!longDesc){
         return text;
     } 
     if (longDesc.required && longDesc.required.length > 0){
-         text = text +'\nRequired Arguments:' + getTextFromArray(longDesc.required, '\t');
+        text = text +'\nRequired Arguments:' + getTextFromArray(longDesc.required, '\t');
     }
     if (longDesc.optional && longDesc.optional.length > 0){
         text = text +'\n\nOptional Arguments:' + getTextFromArray(longDesc.optional, '\t');
@@ -26,21 +26,21 @@ let getLongDesc = function (element) {
     }
     text = text +'\n\n';
     return text;
-}
+};
 
 let showHelpForCommand = function (element, showFull) {
     showFull = showFull || false;
-    let result ="";
+    let result ='';
     if(showFull) {
-        result = "\n" + "usage:\t gite " + element.cmd +  (element.args ? " " + element.args : "") + "\n\n";
-        result = result + "Description:\n" + element.desc + "\n";
-        result = result + (element.longDesc ? getLongDesc(element): "");
+        result = '\n' + 'usage:\t gite ' + element.cmd +  (element.args ? ' ' + element.args : '') + '\n\n';
+        result = result + 'Description:\n' + element.desc + '\n';
+        result = result + (element.longDesc ? getLongDesc(element): '');
     }
     else {
-        result = "\t" + padding(element.cmd.split(' ')[0],30) + "\t" + element.desc;
+        result = '\t' + padding(element.cmd.split(' ')[0],30) + '\t' + element.desc;
     }
     console.log(result);
-}
+};
 
 let padding = function (str, pad, char) {
     char = char || ' ';
@@ -48,7 +48,7 @@ let padding = function (str, pad, char) {
         return str;
     }
     return str + Array(pad-str.length).join(char);
-}
+};
 
 
 let showHelpForCommands = function (elements, showFull) {
@@ -56,19 +56,19 @@ let showHelpForCommands = function (elements, showFull) {
     elements.forEach(element => {
         showHelpForCommand(element, showFull);
     });
-}
+};
 
 let showHelpForOptions = function (elements) {
     elements.forEach(element => {
         showHelpForOption(element);
     });
-}
+};
 
 let showHelpForOption = function (element) {
-    let result ="";
-    result = "\t" + padding(element.option, 30) + "\t" + element.desc;
+    let result ='';
+    result = '\t' + padding(element.option, 30) + '\t' + element.desc;
     console.log(result);
-}
+};
 
 let showHelpGlobal = (config) => {
     console.log(content.usage);
@@ -77,7 +77,7 @@ let showHelpGlobal = (config) => {
     console.log(content.optionsHeader);
     showHelpForOptions(config.globalOptions);
     console.log(content.helpFooter);
-}
+};
 
 module.exports.showHelpForCommand = showHelpForCommand;
 module.exports.showHelpForCommands = showHelpForCommands;
