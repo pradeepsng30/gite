@@ -22,7 +22,7 @@
     "git commands"
   ],
   "scripts": {
-    "lint": "eslint --ignore-path .gitignore ."
+    "lint": "./node_modules/.bin/eslint --ignore-path .gitignore ."
   },
   "author": "Pradeep Singh <pradeepsng30@yahoo.com>",
   "homepage": "https://github.com/pradeepsng30/gite",
