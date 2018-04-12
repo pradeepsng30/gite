@@ -408,5 +408,30 @@ module.exports = {
                 },
             ],
         },
+        {
+            'cmd': 'clone-pr',
+            'args': '<remote> <pr_no> <branch>',                        
+            'desc': 'checkouts to pull request provided to a new branch.',
+            'longDesc' : {
+                'required': [
+                    '<remote>:\t fork to which PR is raised.',
+                    '<pr_no>:\t PR number',
+                    '<branch>:\t new branch name.',
+                ],
+                'samples': [
+                    'upstream 2134 pr_branch',
+                ],
+            },
+            'execCommands': [
+                {
+                    'newcmd': 'git',
+                    'args': 'fetch {{$remote$}} pull/{{$pr_no$}}/head:{{$branch$}}',
+                },
+                {
+                    'newcmd': 'git',
+                    'args': 'checkout {{$branch$}}',
+                },
+            ],
+        },
     ],
 };
