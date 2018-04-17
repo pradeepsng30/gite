@@ -60,7 +60,7 @@ let injectValues = function (str, values) {
     textsToreplace && textsToreplace.forEach(textToreplace => {
         let varString = textToreplace.match(pattern2)[0];
         let varName = varString.slice(1,-1);
-        let varVal = values[varName];
+        let varVal = values[varName].toString();
         if(varVal && varVal.indexOf(' ') > -1) {
             varVal = '\'' + varVal + '\''; 
         }
