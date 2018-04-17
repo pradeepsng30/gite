@@ -1,5 +1,8 @@
 # gite: git-easy 
-A wrapper for git commands. [![Build Status](https://travis-ci.org/pradeepsng30/gite.svg?branch=master)](https://travis-ci.org/pradeepsng30/gite)
+
+A wrapper for git commands. 
+
+[![Build Status](https://travis-ci.org/pradeepsng30/gite.svg?branch=master)](https://travis-ci.org/pradeepsng30/gite)
 
 Makes git simpler. 
 * Light weight node based CLI (command line interface) app with simple readable commands. 
@@ -7,7 +10,7 @@ Makes git simpler.
 * Exhaustive help menu with sample commands
 
 ### Version
-`1.1.1`
+`1.2.0`
 
 Check by running `gite --version` or `gite -v`.
 
