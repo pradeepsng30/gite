@@ -269,7 +269,7 @@ module.exports = {
             'execCommands': [
                 {
                     'newcmd': 'git',
-                    'args': 'commit --amend -m {{$msg$}}',
+                    'args': 'commit --amend -m {{$msg$}} -n',
                 },
             ],
         },
@@ -296,7 +296,7 @@ module.exports = {
                 },
                 {
                     'newcmd': 'git',
-                    'args': 'commit --amend --no-edit',
+                    'args': 'commit --amend --no-edit -n',
                 },
             ],
         },
@@ -362,7 +362,7 @@ module.exports = {
                 },
                 {
                     'newcmd': 'git',
-                    'args': 'commit --no-edit',
+                    'args': 'commit -n --no-edit',
                 },
             ],
         },
@@ -385,7 +385,7 @@ module.exports = {
                 },
                 {
                     'newcmd': 'git',
-                    'args': 'commit --no-edit',
+                    'args': 'commit --no-edit -n',
                 },
             ],
         },
