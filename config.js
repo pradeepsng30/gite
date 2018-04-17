@@ -433,5 +433,24 @@ module.exports = {
                 },
             ],
         },
+        {
+            'cmd': 'search',
+            'args': '<text>',                        
+            'desc': 'search commit with message. shows max 20 results',
+            'longDesc' : {
+                'required': [
+                    '<text>:\t text to search for in commit message',
+                ],
+                'samples': [
+                    '\'fixes\'',
+                ],
+            },
+            'execCommands': [
+                {
+                    'newcmd': 'git',
+                    'args': 'log --max-count=20 --abbrev-commit  --grep={{$text$}}',
+                },
+            ],
+        },
     ],
 };
