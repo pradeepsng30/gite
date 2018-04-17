@@ -269,7 +269,7 @@ module.exports = {
             'execCommands': [
                 {
                     'newcmd': 'git',
-                    'args': 'commit --amend -m {{$msg$}}',
+                    'args': 'commit --amend -m {{$msg$}} -n',
                 },
             ],
         },
@@ -296,7 +296,7 @@ module.exports = {
                 },
                 {
                     'newcmd': 'git',
-                    'args': 'commit --amend --no-edit',
+                    'args': 'commit --amend --no-edit -n',
                 },
             ],
         },
@@ -362,7 +362,7 @@ module.exports = {
                 },
                 {
                     'newcmd': 'git',
-                    'args': 'commit --no-edit',
+                    'args': 'commit -n --no-edit',
                 },
             ],
         },
@@ -385,7 +385,7 @@ module.exports = {
                 },
                 {
                     'newcmd': 'git',
-                    'args': 'commit --no-edit',
+                    'args': 'commit --no-edit -n',
                 },
             ],
         },
@@ -405,6 +405,50 @@ module.exports = {
                 {
                     'newcmd': 'git',
                     'args': 'rm --cached {{$path$}}',
+                },
+            ],
+        },
+        {
+            'cmd': 'clone-pr',
+            'args': '<remote> <pr_no> <branch>',                        
+            'desc': 'checkouts to pull request provided to a new branch.',
+            'longDesc' : {
+                'required': [
+                    '<remote>:\t fork to which PR is raised.',
+                    '<pr_no>:\t PR number',
+                    '<branch>:\t new branch name.',
+                ],
+                'samples': [
+                    'upstream 2134 pr_branch',
+                ],
+            },
+            'execCommands': [
+                {
+                    'newcmd': 'git',
+                    'args': 'fetch {{$remote$}} pull/{{$pr_no$}}/head:{{$branch$}}',
+                },
+                {
+                    'newcmd': 'git',
+                    'args': 'checkout {{$branch$}}',
+                },
+            ],
+        },
+        {
+            'cmd': 'search',
+            'args': '<text>',                        
+            'desc': 'search commit with message. shows max 20 results',
+            'longDesc' : {
+                'required': [
+                    '<text>:\t text to search for in commit message',
+                ],
+                'samples': [
+                    '\'fixes\'',
+                ],
+            },
+            'execCommands': [
+                {
+                    'newcmd': 'git',
+                    'args': 'log --max-count=20 --abbrev-commit  --grep={{$text$}}',
                 },
             ],
         },

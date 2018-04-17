@@ -1,5 +1,8 @@
-# gite: git-easy [![Build Status](https://travis-ci.org/pradeepsng30/gite.svg?branch=master)](https://travis-ci.org/pradeepsng30/gite)
-A wrapper for git commands.
+# gite: git-easy 
+
+A wrapper for git commands. 
+
+[![Build Status](https://travis-ci.org/pradeepsng30/gite.svg?branch=master)](https://travis-ci.org/pradeepsng30/gite)
 
 Makes git simpler. 
 * Light weight node based CLI (command line interface) app with simple readable commands. 
@@ -7,7 +10,7 @@ Makes git simpler.
 * Exhaustive help menu with sample commands
 
 ### Version
-`1.1.1`
+`1.2.0`
 
 Check by running `gite --version` or `gite -v`.
 
@@ -42,13 +45,15 @@ Run by executing command
 * `undo                `            shelves all uncommitted changes. Stashes them.
 * `redo                `            applies last shelved changes. Removes from shelf.
 * `branch-copy         `            Create and switch to a new branch as a copy of current or source branch (if provided).
-* `change-msg          `            changes message of last comm* `it
+* `change-msg          `            changes message of last commit
 * `rm-file-last-commit `            remove changes of file from last commit
 * `rm-branch           `            remove branch from local
 * `rm-branch-remote    `            remove branch from provided remote
 * `squash              `            squashes (combines) last 'n' commits with self generated squash message
 * `squash-all          `            squashes (combines) all unpushed commits with self generated squash message
 * `rm-file             `            remove file from git. Doesn't delete it
+* `clone-pr            `            checkouts to pull request provided to a new branch.
+* `search              `            search commit with message. Shows max 20 results.
 
 ........ more to come
 
