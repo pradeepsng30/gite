@@ -1,6 +1,6 @@
 {
   "name": "git-easy",
-  "version": "1.2.0",
+  "version": "1.3.0",
   "description": "Wrapper for git. Git is really easy now.",
   "main": "index.js",
   "preferGlobal": true,

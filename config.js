@@ -62,7 +62,7 @@ module.exports = {
             ],
         },
         {
-            'cmd': 'branch-keep-copy',
+            'cmd': 'backup',
             'args': '<new_branch> [source]',
             'desc': 'Create and keep aside (don\'t switch) a new branch as a copy of current or source branch (if provided)',
             'longDesc' : {
@@ -206,7 +206,7 @@ module.exports = {
             ],
         },
         {
-            'cmd': 'remove-commit',
+            'cmd': 'rm-commit',
             'args': '<comm_id>',                        
             'desc': 'Removes the provided commit from current tree. WARNING: use only if commit(s) after this are not dependent on this commit',
             'longDesc' : {
